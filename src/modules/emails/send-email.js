@@ -6,10 +6,9 @@ export async function sendEmail(name,email){
         service:'gmail',
         auth: {
           user: "nour.ayman.essmat@gmail.com",
-          pass: "jbhlkvdhjbwkxgos",
+          pass: "wvzljixxnfcdeliv",
         },
       });
-     
       const token=jwt.sign({email},"emailverification");
       const info = await transporter.sendMail({
         from: '"Nour Ayman" <nour.ayman.essmat@gmail.com>', // sender address
@@ -17,6 +16,5 @@ export async function sendEmail(name,email){
         subject: `${name}, verify your email `, // Subject line
         html: emailHtml(token,name), // html body
       });
-    
       console.log("Message sent: %s", info.messageId);    
 }
